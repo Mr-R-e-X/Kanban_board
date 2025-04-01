@@ -70,7 +70,7 @@ export async function POST(req: NextRequest) {
       verify_code_expiry,
     });
     await user.save();
-    const template = generateKanbanEmailTemplate(user.name, verify_code);
+    const template = generateKanbanEmailTemplate(user.name, user.verify_code);
     sendMail([email], "Verify your account", template);
     const accessToken = await user.generateAccessToken();
     await setAuthCookie(accessToken);
