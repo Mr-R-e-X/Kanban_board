@@ -19,7 +19,7 @@ import {
   useSprint,
 } from "@/context/SprintContext";
 import { useDroppable } from "@dnd-kit/core";
-import { Edit, X } from "lucide-react";
+import { Edit, GripVertical, X } from "lucide-react";
 
 const Column = ({ columnType, tasks, color, colTitle }: ColumnProps) => {
   const { setNodeRef } = useDroppable({
@@ -157,13 +157,16 @@ export const Task = ({
           >
             {task.priority?.toUpperCase()}
           </span>
-          <div {...listeners}>
+          <div
+            className="h-max max-w-[300px] break-words whitespace-normal"
+            {...listeners}
+          >
             <h3
-              className={`text-lg font-bold text-primary mt-2 flex justify-between cursor-grab ${style}`}
+              className={`text-lg font-bold text-primary cursor-grab ${style}`}
             >
-              {task.title}{" "}
+              {task.title}
             </h3>
-            <p className={`text-sm text-gray-600 mt-1 ${style}`}>
+            <p className="text-sm text-gray-600 mt-1 break-words whitespace-normal">
               {task.description}
             </p>
           </div>
