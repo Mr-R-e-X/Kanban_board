@@ -6,6 +6,7 @@ import { sendMail } from "@/lib/mailer";
 import { signUpValidation } from "@/app/validation/zod.validation";
 import { ApiResponse } from "@/app/types/apiResponse";
 import { setAuthCookie } from "@/lib/auth.cookies";
+import { generateKanbanEmailTemplate } from "@/templates/SendToken.mail";
 
 export async function POST(req: NextRequest) {
   try {
@@ -69,8 +70,8 @@ export async function POST(req: NextRequest) {
       verify_code_expiry,
     });
     await user.save();
-
-    sendMail([email], "Verify your account", `<h1>${verify_code}</h1>`);
+    const template = generateKanbanEmailTemplate(user.name, verify_code);
+    sendMail([email], "Verify your account", template);
     const accessToken = await user.generateAccessToken();
     await setAuthCookie(accessToken);
 
