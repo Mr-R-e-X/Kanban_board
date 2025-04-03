@@ -112,26 +112,6 @@ export default function ProfilePage() {
             done: state.profileStats.totalDone,
             total: state.profileStats.totalTasks,
           },
-          {
-            title: "Urgent Task Completion Rate",
-            done: state.profileStats.totalUrgentDoneTask,
-            total: state.profileStats.totalUrgentTask,
-          },
-          {
-            title: "High Priority Task Completion Rate",
-            done: state.profileStats.totalHighDoneTask,
-            total: state.profileStats.totalHighTask,
-          },
-          {
-            title: "Medium Priority Task Completion Rate",
-            done: state.profileStats.totalMediumDoneTask,
-            total: state.profileStats.totalMediumTask,
-          },
-          {
-            title: "Low Priority Task Completion Rate",
-            done: state.profileStats.totalLowDoneTask,
-            total: state.profileStats.totalLowTask,
-          },
         ].map((stat, index) => (
           <div
             key={index}

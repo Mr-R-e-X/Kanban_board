@@ -173,10 +173,10 @@ const Dashboard = () => {
           All Sprint List
         </h1>
       </div>
-      <div className="w-full h-full overflow-hidden">
-        <div className="max-h-[95%] w-full overflow-y-scroll">
+      <div className="w-full h-full">
+        <div className="max-h-[95%] w-full overflow-y-scroll pb-10 ">
           {sprintState.sprints.length === 0 ? (
-            <div className="text-center text-xl font-semibold text-primary">
+            <div className="text-center text-xl font-semibold text-primary min-h-full">
               No Sprints Found
             </div>
           ) : (
