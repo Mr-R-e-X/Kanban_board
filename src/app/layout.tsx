@@ -33,8 +33,8 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider>
-          <ModalProvider>
-            <MiscProvider>
+          <MiscProvider>
+            <ModalProvider>
               <AuthProvider>
                 {children}
                 <Toaster
@@ -49,8 +49,8 @@ export default function RootLayout({
                   }}
                 />
               </AuthProvider>
-            </MiscProvider>
-          </ModalProvider>
+            </ModalProvider>
+          </MiscProvider>
         </ThemeProvider>
       </body>
     </html>

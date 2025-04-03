@@ -14,7 +14,6 @@ import { ModalActionEnum, useModal } from "@/context/ModalContext";
 
 const RegisterForm = () => {
   const { state: miscState, dispatch: miscDispatch } = useMisc();
-  const { state: authState, dispatch: authDispatch } = useAuth();
   const { state: modalState, dispatch: modalDispatch } = useModal();
   const {
     register,
@@ -103,9 +102,9 @@ const RegisterForm = () => {
       <label className="input input-primary w-full input-lg my-2">
         Password
         <input
-          type={miscState.seePassword ? "text" : "password"}
+          type={miscState.seePassword ? "password" : "text"}
           className="grow ml-2"
-          placeholder={miscState.seePassword ? "john@123" : "••••••••"}
+          placeholder={miscState.seePassword ? "••••••••" : "john@123"}
           {...register("password")}
         />
         <span
@@ -117,7 +116,7 @@ const RegisterForm = () => {
             })
           }
         >
-          {miscState.seePassword ? <EyeIcon /> : <EyeClosed />}
+          {miscState.seePassword ? <EyeClosed /> : <EyeIcon />}
         </span>
       </label>
       {errors.password && (

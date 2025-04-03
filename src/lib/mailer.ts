@@ -8,7 +8,7 @@ const transport = nodemailer.createTransport({
     user: process.env.SMTP_EMAIL,
     pass: process.env.SMTP_EMAIL_PASSWORD,
   },
-} as nodemailer.TransportOptions);
+} as TransportOptions);
 
 export function sendMail(emails: Array<string>, subject: string, body: string) {
   const mailOptions = {

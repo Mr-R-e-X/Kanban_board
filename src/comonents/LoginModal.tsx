@@ -19,17 +19,25 @@ const LoginModal = () => {
   const modalRef = useRef<HTMLDivElement>(null);
   const { state: modalState, dispatch: modalDispatch } = useModal();
   const { state: miscState, dispatch: miscDispatch } = useMisc();
-  const { state: authState, dispatch: authDispatch } = useAuth();
+  const { dispatch: authDispatch } = useAuth();
 
   const handleClickOutside = (event: MouseEvent) => {
     if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
       modalDispatch({ type: "CLOSE_LOGIN" });
+      miscDispatch({
+        type: MiscActionEnum.SET_SEE_PASSWORD,
+        payload: false,
+      });
     }
   };
 
   const handleEscapeButton = (event: KeyboardEvent) => {
     if (event.key === "Escape") {
       modalDispatch({ type: "CLOSE_LOGIN" });
+      miscDispatch({
+        type: MiscActionEnum.SET_SEE_PASSWORD,
+        payload: false,
+      });
     }
   };
 
@@ -129,22 +137,11 @@ const LoginModal = () => {
           <label className="input input-primary w-full input-lg my-2">
             Password
             <input
-              type="password"
+              type={"password"}
               className="grow ml-2"
-              placeholder={miscState.seePassword ? "john@123" : "••••••••"}
+              placeholder={"••••••••"}
               {...register("password")}
             />
-            <span
-              className="badge badge-xs"
-              onClick={() =>
-                miscDispatch({
-                  type: MiscActionEnum.SET_SEE_PASSWORD,
-                  payload: !miscState.seePassword,
-                })
-              }
-            >
-              {miscState.seePassword ? <EyeIcon /> : <EyeClosed />}
-            </span>
           </label>
           {errors.password && (
             <span className="text-red-500 text-sm ml-2">

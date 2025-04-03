@@ -3,20 +3,30 @@ import React, { useEffect, useRef, useState } from "react";
 import { ModalActionEnum, useModal } from "@/context/ModalContext";
 import OtpInput from "./OtpForm";
 import RegisterForm from "./RegisterForm";
+import { MiscActionEnum, useMisc } from "@/context/MiscContext";
 
 const RegisterModal = () => {
   const modalRef = useRef<HTMLDivElement>(null);
   const { state, dispatch } = useModal();
+  const { dispatch: miscDispatch } = useMisc();
 
   const handleClickOutside = (event: MouseEvent) => {
     if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
       dispatch({ type: ModalActionEnum.CLOSE_REGISTER });
+      miscDispatch({
+        type: MiscActionEnum.SET_SEE_PASSWORD,
+        payload: false,
+      });
     }
   };
 
   const handleEscapeButton = (event: KeyboardEvent) => {
     if (event.key === "Escape") {
       dispatch({ type: ModalActionEnum.CLOSE_REGISTER });
+      miscDispatch({
+        type: MiscActionEnum.SET_SEE_PASSWORD,
+        payload: false,
+      });
     }
   };
 

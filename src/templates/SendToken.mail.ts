@@ -1,7 +1,4 @@
-export function generateKanbanEmailTemplate(
-  name: string,
-  token: string
-): string {
+export function generateKanbanEmailTemplate(name: string, token: string) {
   return `
     <html>
       <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; text-align: center;">
