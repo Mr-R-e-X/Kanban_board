@@ -21,7 +21,6 @@ import {
   useSprint,
 } from "@/context/SprintContext";
 import axios, { AxiosError } from "axios";
-import { ApiResponse } from "@/app/types/apiResponse";
 
 const DragTaskCols = () => {
   const { state: sprintState, dispatch: sprintDispatch } = useSprint();
